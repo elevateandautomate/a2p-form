@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LashConnector A2P Registration Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .tooltiptext {
+      display: none;
+    }
+    
+    .input-class:hover + .tooltiptext {
+      display: block;
+    }
+
+    /* Additional custom styles for layout */
+    .hidden {
+      display: none;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-50">
+  <header class="bg-purple-600 text-white py-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">LashConnector A2P Portal</h1>
+      <div class="flex space-x-4">
+        <p>(800) 555-1234</p>
+        <a href="mailto:support@lashconnector.com" class="text-white">support@lashconnector.com</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto px-4 py-8">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-semibold mb-2">A2P Messaging Registration</h2>
+      <p>A2P (Application-to-Person) messaging allows businesses to send SMS messages to large audiences in compliance with regulations. LashConnector helps you register for A2P messaging, ensuring you stay compliant while communicating with your clients effectively.</p>
+    </div>
+
+    <!-- Steps Section -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+      <div class="flex justify-between mb-6">
+        <div class="step active">
+          <span class="font-bold text-xl">1</span>
+          <p class="text-lg">Basic Info</p>
+        </div>
+        <div class="step">
+          <span class="font-bold text-xl">2</span>
+          <p class="text-lg">Legal Info</p>
+        </div>
+        <div class="step">
+          <span class="font-bold text-xl">3</span>
+          <p class="text-lg">Policies</p>
+        </div>
+      </div>
+
+      <!-- Form Starts Here -->
+      <form id="a2p-form">
+        <!-- Step 1: Basic Business Information -->
+        <div class="step-content active">
+          <h3 class="text-2xl font-semibold mb-4">Basic Business Information</h3>
+          <div class="mb-4">
+            <label for="business-name" class="block text-lg">Business Name *</label>
+            <input type="text" id="business-name" class="input-class border border-gray-300 p-2 w-full rounded mt-2" placeholder="Business Name" required>
+            <span class="tooltiptext">The legal name of your business as registered with your state or local government</span>
+          </div>
+          <div class="mb-4">
+            <label for="website-url" class="block text-lg">Website URL *</label>
+            <input type="url" id="website-url" class="input-class border border-gray-300 p-2 w-full rounded mt-2" placeholder="https://yourwebsite.com" required>
+            <span class="tooltiptext">Your business website helps verify your identity and provides correct information</span>
+          </div>
+          <div class="mb-4">
+            <label for="business-phone" class="block text-lg">Business Phone Number *</label>
+            <input type="tel" id="business-phone" class="input-class border border-gray-300 p-2 w-full rounded mt-2" placeholder="(800) 555-1234" required>
+            <span class="tooltiptext">A direct phone number where we can contact your business for verification.</span>
+          </div>
+          <button type="button" onclick="nextStep()" class="bg-purple-600 text-white py-2 px-4 rounded">Next</button>
+        </div>
+
+        <!-- Step 2: Legal Business Information -->
+        <div class="step-content hidden">
+          <h3 class="text-2xl font-semibold mb-4">Legal Business Information</h3>
+          <div class="mb-4">
+            <label for="ein" class="block text-lg">Employer Identification Number (EIN) *</label>
+            <input type="text" id="ein" class="input-class border border-gray-300 p-2 w-full rounded mt-2" placeholder="EIN Number" required>
+            <span class="tooltiptext">Also known as your federal tax identification number, used to identify business entities.</span>
+            <p class="text-sm mt-2">Don't have an EIN? <a href="https://sa.www4.irs.gov/modiein/individual/index.jsp" target="_blank" class="text-purple-600">Register for free in under 15 mins</a></p>
+          </div>
+          <div class="mb-4">
+            <label for="business-address" class="block text-lg">Business Address</label>
+            <input type="text" id="business-address" class="input-class border border-gray-300 p-2 w-full rounded mt-2" placeholder="Business Address" required>
+            <span class="tooltiptext">Enter the business address exactly as it appears on your CP575 form</span>
+          </div>
+          <div class="mb-4">
+            <label for="business-phone" class="block text-lg">Business Phone Number</label>
+            <input type="tel" id="business-phone" class="input-class border border-gray-300 p-2 w-full rounded mt-2" placeholder="(800) 555-1234" required>
+          </div>
+          <button type="button" onclick="nextStep()" class="bg-purple-600 text-white py-2 px-4 rounded">Next</button>
+        </div>
+
+        <!-- Step 3: Business Policies -->
+        <div class="step-content hidden">
+          <h3 class="text-2xl font-semibold mb-4">Business Policies</h3>
+          <div class="mb-4">
+            <label for="privacy-policy-url" class="block text-lg">Privacy Policy URL *</label>
+            <input type="url" id="privacy-policy-url" class="input-class border border-gray-300 p-2 w-full rounded mt-2" placeholder="https://yourbusiness.com/privacy" required>
+            <span class="tooltiptext">Your privacy policy should explain how you collect, use, and protect customer data</span>
+          </div>
+          <div class="mb-4">
+            <label for="terms-of-service-url" class="block text-lg">Terms of Service URL *</label>
+            <input type="url" id="terms-of-service-url" class="input-class border border-gray-300 p-2 w-full rounded mt-2" placeholder="https://yourbusiness.com/terms" required>
+            <span class="tooltiptext">Your terms should include information about your messaging practices and opt-out instructions</span>
+          </div>
+          <div class="mb-4">
+            <p class="text-purple-600">Need help with A2P registration? <a href="mailto:support@lashconnector.com" class="text-purple-600">Connect LashConnector support team</a></p>
+          </div>
+          <button type="submit" class="bg-purple-600 text-white py-2 px-4 rounded">Submit Registration</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-6 mt-8">
+      <div class="container mx-auto text-center">
+        <p class="mb-4">© 2025 LashConnector. All rights reserved.</p>
+        <div class="space-x-4">
+          <a href="https://www.privacy.com" class="text-white">Privacy Policy</a>
+          <a href="https://www.terms.com" class="text-white">Terms of Service</a>
+        </div>
+        <img src="https://storage.googleapis.com/msgsndr/C4EL78WQvWpqMgSsv2kE/media/67f804c3c7a01529fdd0200e.png" alt="Trusted and Secure" class="mx-auto mt-4">
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    let currentStep = 0;
+
+    function nextStep() {
+      const steps = document.querySelectorAll('.step-content');
+      steps[currentStep].classList.add('hidden');
+      currentStep++;
+      if (currentStep < steps.length) {
+        steps[currentStep].classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>

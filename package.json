@@ -1,0 +1,25 @@
+{
+  "name": "a2p-registration",
+  "version": "1.0.0",
+  "description": "This system registers SMS brands and campaigns with Twilio using n8n and Supabase.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elevateandautomate/a2p-form.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elevateandautomate/a2p-form/issues"
+  },
+  "homepage": "https://github.com/elevateandautomate/a2p-form#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.3"
+  }
+}

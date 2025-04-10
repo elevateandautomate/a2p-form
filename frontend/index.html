@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LashConnector A2P Registration Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
         
@@ -191,51 +191,206 @@
                     Close <i class="fas fa-times ml-2"></i>
                 </button>
             </div>
-            
-            <div class="info-card bg-white rounded-lg shadow-md p-6 mb-8">
-                <div class="flex items-start">
-                    <i class="fas fa-info-circle text-purple-600 text-xl mr-4 mt-1"></i>
-                    <div>
-                        <h3 class="font-semibold text-gray-800 mb-2">Ready to Register?</h3>
-                        <p class="text-gray-600">
-                            Complete the registration form below to begin the A2P registration process. The entire process typically takes 3-5 business days.
-                            Have your business information ready to expedite the process.
-                        </p>
-                    </div>
-                </div>
-            </div>
         </section>
         
         <!-- Registration Form -->
         <section>
             <div class="w-full max-w-2xl mx-auto bg-white rounded-xl form-container overflow-hidden">
+                <!-- Progress Bar -->
+                <div class="px-6 pt-6">
+                    <div class="flex justify-between mb-6">
+                        <div class="progress-step flex flex-col items-center w-1/3">
+                            <div class="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center font-semibold step-number">1</div>
+                            <span class="text-sm mt-2 text-gray-600 step-label">Basic Info</span>
+                        </div>
+                        <div class="progress-step flex flex-col items-center w-1/3">
+                            <div class="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center font-semibold step-number">2</div>
+                            <span class="text-sm mt-2 text-gray-600 step-label">Legal Info</span>
+                        </div>
+                        <div class="progress-step flex flex-col items-center w-1/3">
+                            <div class="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center font-semibold step-number">3</div>
+                            <span class="text-sm mt-2 text-gray-600 step-label">Policies</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Form Content -->
-                <form action="https://n8n-a2p.onrender.com/webhook/a2p-register" method="POST">
-                    <div class="mb-5">
-                        <label for="businessName" class="block text-sm font-medium text-gray-700">Business Name</label>
-                        <input type="text" id="businessName" name="businessName" class="w-full px-4 py-2 rounded-lg border" required placeholder="Enter business name">
+                <form id="registrationForm" class="p-6" action="https://n8n-a2p.onrender.com/webhook/a2p-register" method="POST">
+                    <!-- Step 1: Basic Information -->
+                    <div class="form-step active" data-step="1">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Basic Business Information</h2>
+                        <p class="text-gray-600 mb-6">
+                            Please enter your business name and website. This helps us ensure your registration details are accurate and that your business can be properly identified for A2P messaging.
+                        </p>
+                        
+                        <div class="mb-5">
+                            <label for="businessName" class="block text-sm font-medium text-gray-700">Business Name *</label>
+                            <input type="text" id="businessName" name="businessName" 
+                                   class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
+                                   placeholder="Enter your business name" required>
+                            <div class="error-message hidden" id="businessNameError">Please enter your business name</div>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <label for="websiteUrl" class="block text-sm font-medium text-gray-700">Website URL *</label>
+                            <input type="url" id="websiteUrl" name="websiteUrl" 
+                                   class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
+                                   placeholder="https://yourbusiness.com" required>
+                            <div class="error-message hidden" id="websiteUrlError">Please enter a valid URL (e.g., https://example.com)</div>
+                        </div>
+                        
+                        <div class="flex justify-between mt-8">
+                            <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white btn-primary">
+                                Next <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
                     </div>
                     
-                    <div class="mb-5">
-                        <label for="websiteUrl" class="block text-sm font-medium text-gray-700">Website URL</label>
-                        <input type="url" id="websiteUrl" name="websiteUrl" class="w-full px-4 py-2 rounded-lg border" required placeholder="Enter website URL">
-                    </div>
-
-                    <div class="mb-5">
-                        <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Business Phone Number</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" class="w-full px-4 py-2 rounded-lg border" required placeholder="Enter business phone number">
+                    <!-- Step 2: Legal Information -->
+                    <div class="form-step hidden" data-step="2">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Legal Business Information</h2>
+                        <p class="text-gray-600 mb-6">
+                            A2P registration requires legal identification for your business. Please provide your EIN and phone number for verification purposes.
+                        </p>
+                        
+                        <div class="mb-5">
+                            <label for="ein" class="block text-sm font-medium text-gray-700">Employer Identification Number (EIN) *</label>
+                            <input type="text" id="ein" name="ein" 
+                                   class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
+                                   placeholder="XX-XXXXXXX" required pattern="\d{2}-\d{7}">
+                            <div class="error-message hidden" id="einError">Please enter a valid EIN (format: XX-XXXXXXX)</div>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Business Phone Number *</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" 
+                                   class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
+                                   placeholder="(123) 456-7890" required pattern="\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}">
+                            <div class="error-message hidden" id="phoneNumberError">Please enter a valid phone number</div>
+                        </div>
+                        
+                        <div class="flex justify-between mt-8">
+                            <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 btn-secondary">
+                                <i class="fas fa-arrow-left mr-2"></i> Back
+                            </button>
+                            <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white btn-primary">
+                                Next <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
                     </div>
                     
-                    <button type="submit" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">Submit</button>
+                    <!-- Step 3: Policies -->
+                    <div class="form-step hidden" data-step="3">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Business Policies</h2>
+                        <p class="text-gray-600 mb-6">
+                            A2P requires businesses to have publicly available policies to ensure transparency. Make sure your business has a privacy policy 
+                            and terms of service that cover your messaging practices.
+                        </p>
+                        
+                        <div class="mb-5">
+                            <label for="privacyPolicyUrl" class="block text-sm font-medium text-gray-700">Privacy Policy URL *</label>
+                            <input type="url" id="privacyPolicyUrl" name="privacyPolicyUrl" 
+                                   class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
+                                   placeholder="https://yourbusiness.com/privacy" required>
+                            <div class="error-message hidden" id="privacyPolicyUrlError">Please enter a valid URL for your privacy policy</div>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <label for="termsUrl" class="block text-sm font-medium text-gray-700">Terms of Service URL *</label>
+                            <input type="url" id="termsUrl" name="termsUrl" 
+                                   class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
+                                   placeholder="https://yourbusiness.com/terms" required>
+                            <div class="error-message hidden" id="termsUrlError">Please enter a valid URL for your terms of service</div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg mb-6">
+                            <h4 class="font-medium text-purple-800 mb-2"><i class="fas fa-lightbulb mr-2"></i> Need help with policies?</h4>
+                            <p class="text-purple-700 text-sm">
+                                Don't have these pages yet? We can recommend compliance-focused templates that meet A2P requirements.
+                                <a href="#" class="text-purple-600 underline">Contact our support team</a> for assistance.
+                            </p>
+                        </div>
+                        
+                        <div class="flex justify-between mt-8">
+                            <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 btn-secondary">
+                                <i class="fas fa-arrow-left mr-2"></i> Back
+                            </button>
+                            <button type="submit" class="px-6 py-2 rounded-lg font-medium text-white btn-primary">
+                                Submit Registration <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
                 </form>
+                
+                <!-- Success Modal -->
+                <div id="successModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 z-50 flex items-center justify-center">
+                    <div class="bg-white p-6 rounded-lg max-w-sm w-full text-center">
+                        <h3 class="text-2xl font-semibold mb-4">Registration Successful</h3>
+                        <p class="text-gray-700 mb-4">Your A2P registration has been successfully submitted. We will contact you for further steps.</p>
+                        <button id="closeSuccessModal" class="px-6 py-2 bg-purple-600 text-white rounded-lg">Close</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+    
+    <script>
+        // JavaScript to handle form steps and modal functionality
+        
+        const nextBtns = document.querySelectorAll('.btn-next');
+        const prevBtns = document.querySelectorAll('.btn-prev');
+        const formSteps = document.querySelectorAll('.form-step');
+        
+        let currentStep = 1;
+        
+        nextBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentStep < 3) {
+                    formSteps[currentStep - 1].classList.add('hidden');
+                    formSteps[currentStep].classList.remove('hidden');
+                    currentStep++;
+                    updateStepProgress();
+                }
+            });
+        });
+        
+        prevBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    formSteps[currentStep - 1].classList.add('hidden');
+                    formSteps[currentStep - 2].classList.remove('hidden');
+                    currentStep--;
+                    updateStepProgress();
+                }
+            });
+        });
+        
+        function updateStepProgress() {
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                if (index < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (index === currentStep - 1) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <p>© 2023 LashConnector. All rights reserved.</p>
-        </div>
-    </footer>
+        // Modal Functionality
+        const learnMoreBtn = document.getElementById('learnMoreBtn');
+        const closeInfoBtn = document.getElementById('closeInfoBtn');
+        const moreInfo = document.getElementById('moreInfo');
+        
+        learnMoreBtn.addEventListener('click', () => {
+            moreInfo.classList.remove('hidden');
+        });
+        
+        closeInfoBtn.addEventListener('click', () => {
+            moreInfo.classList.add('hidden');
+        });
+    </script>
 </body>
 </html>

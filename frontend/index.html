@@ -9,59 +9,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-        
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f8fafc;
         }
-        
+
         .form-container {
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-        
+
         .progress-step.active {
             background-color: #7c3aed;
             color: white;
         }
-        
+
         .progress-step.completed {
             background-color: #10b981;
             color: white;
         }
-        
+
         .input-error {
             border-color: #ef4444;
         }
-        
+
         .error-message {
             color: #ef4444;
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
-        
+
         .btn-primary {
             background-color: #7c3aed;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             background-color: #6d28d9;
         }
-        
+
         .btn-secondary {
             background-color: #e2e8f0;
             transition: all 0.3s ease;
         }
-        
+
         .btn-secondary:hover {
             background-color: #cbd5e1;
         }
-        
+
         .tooltip {
             position: relative;
             display: inline-block;
         }
-        
+
         .tooltip .tooltip-text {
             visibility: hidden;
             width: 200px;
@@ -79,12 +79,12 @@
             transition: opacity 0.3s;
             font-size: 0.875rem;
         }
-        
+
         .tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
-        
+
         .info-card {
             border-left: 4px solid #7c3aed;
         }
@@ -118,7 +118,7 @@
                     A2P (Application-to-Person) messaging allows businesses to send SMS messages to large audiences in compliance with regulations.
                     LashConnector helps you register for A2P messaging, ensuring you stay compliant while communicating with your clients effectively.
                 </p>
-                
+
                 <div class="grid md:grid-cols-3 gap-6 mb-8">
                     <div class="bg-purple-50 p-6 rounded-lg">
                         <div class="flex items-center mb-3">
@@ -131,7 +131,7 @@
                             Application-to-Person messaging is the process of sending automated SMS messages from a business application to mobile users.
                         </p>
                     </div>
-                    
+
                     <div class="bg-purple-50 p-6 rounded-lg">
                         <div class="flex items-center mb-3">
                             <div class="bg-purple-100 p-3 rounded-full mr-4">
@@ -143,7 +143,7 @@
                             Registration ensures compliance with carrier regulations, prevents message blocking, and maintains high delivery rates.
                         </p>
                     </div>
-                    
+
                     <div class="bg-purple-50 p-6 rounded-lg">
                         <div class="flex items-center mb-3">
                             <div class="bg-purple-100 p-3 rounded-full mr-4">
@@ -156,23 +156,23 @@
                         </p>
                     </div>
                 </div>
-                
+
                 <button id="learnMoreBtn" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
                     Learn More About A2P <i class="fas fa-chevron-down ml-2"></i>
                 </button>
             </div>
-            
+
             <!-- Expanded Educational Content (hidden by default) -->
             <div id="moreInfo" class="hidden bg-white rounded-xl p-6 shadow-md mb-8">
                 <h3 class="text-xl font-semibold text-gray-800 mb-4">A2P Messaging Explained</h3>
-                
+
                 <div class="mb-6">
                     <h4 class="font-medium text-gray-700 mb-2"><i class="fas fa-question-circle text-purple-600 mr-2"></i> What is A2P messaging?</h4>
                     <p class="text-gray-600 pl-8 mb-4">
-                        A2P (Application-to-Person) messaging refers to automated text messages sent from a business application to a mobile user. 
+                        A2P (Application-to-Person) messaging refers to automated text messages sent from a business application to a mobile user.
                         This includes notifications, alerts, marketing messages, and other business communications sent via SMS.
                     </p>
-                    
+
                     <h4 class="font-medium text-gray-700 mb-2"><i class="fas fa-exclamation-circle text-purple-600 mr-2"></i> Why is A2P registration important?</h4>
                     <ul class="text-gray-600 pl-8 mb-4 list-disc space-y-2">
                         <li>Ensures compliance with carrier regulations and industry standards</li>
@@ -181,19 +181,19 @@
                         <li>Provides transparency about your messaging practices</li>
                         <li>Helps combat spam and fraudulent messages</li>
                     </ul>
-                    
+
                     <h4 class="font-medium text-gray-700 mb-2"><i class="fas fa-user-tie text-purple-600 mr-2"></i> How LashConnector helps</h4>
                     <p class="text-gray-600 pl-8">
-                        As your A2P partner, LashConnector handles the registration process with carriers, ensures your messaging practices comply with regulations, 
+                        As your A2P partner, LashConnector handles the registration process with carriers, ensures your messaging practices comply with regulations,
                         and provides ongoing support to maintain your A2P status. We act as your liaison with carriers to resolve any delivery issues.
                     </p>
                 </div>
-                
+
                 <button id="closeInfoBtn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
                     Close <i class="fas fa-times ml-2"></i>
                 </button>
             </div>
-            
+
             <div class="info-card bg-white rounded-lg shadow-md p-6 mb-8">
                 <div class="flex items-start">
                     <i class="fas fa-info-circle text-purple-600 text-xl mr-4 mt-1"></i>
@@ -239,7 +239,7 @@
                     <div class="form-step active" data-step="1">
                         <h2 class="text-xl font-semibold mb-4 text-gray-800">Basic Business Information</h2>
                         <p class="text-gray-600 mb-6">
-                            Please enter your full name, email, and phone number to get started with the A2P registration.
+                            Please enter your full name, email, and phone number to get started with the A2P registration process.
                         </p>
                         <div class="mb-5">
                             <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name *</label>
@@ -253,9 +253,7 @@
                             <label for="phone" class="block text-sm font-medium text-gray-700">Phone *</label>
                             <input type="text" id="phone" name="phone" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your phone number" required>
                         </div>
-                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700">
-                            Next <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
+                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700" onclick="nextStep(1)">Next</button>
                     </div>
                     
                     <!-- Step 2: EIN Information -->
@@ -279,12 +277,10 @@
                             <input type="text" id="businessAddress" name="businessAddress" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your business address" required>
                         </div>
                         <p>If you don't have an EIN yet, you can get one for free in under 15 minutes. <a href="https://sa.www4.irs.gov/modiein/individual/index.jsp" target="_blank">Click here to apply for your EIN</a></p>
-                        <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 bg-gray-300 hover:bg-gray-400">
+                        <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 bg-gray-300 hover:bg-gray-400" onclick="prevStep(2)">
                             <i class="fas fa-arrow-left mr-2"></i> Back
                         </button>
-                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700">
-                            Next <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
+                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700" onclick="nextStep(2)">Next</button>
                     </div>
                     
                     <!-- Step 3: Policies -->
@@ -314,14 +310,14 @@
                             Please review the information you provided to ensure it is accurate. Double check the details on your CP575 form and confirm that all the information is correct.
                         </p>
                         <div class="mb-5">
-                            <p><strong>Full Name:</strong> {{fullName}}</p>
-                            <p><strong>Email:</strong> {{email}}</p>
-                            <p><strong>Phone:</strong> {{phone}}</p>
-                            <p><strong>EIN:</strong> {{ein}}</p>
-                            <p><strong>Business Name:</strong> {{businessName}}</p>
-                            <p><strong>Business Address:</strong> {{businessAddress}}</p>
-                            <p><strong>Privacy Policy URL:</strong> {{privacyPolicy}}</p>
-                            <p><strong>Terms of Service URL:</strong> {{termsOfService}}</p>
+                            <p><strong>Full Name:</strong> </p>
+                            <p><strong>Email:</strong> </p>
+                            <p><strong>Phone:</strong> </p>
+                            <p><strong>EIN:</strong> </p>
+                            <p><strong>Business Name:</strong> </p>
+                            <p><strong>Business Address:</strong> </p>
+                            <p><strong>Privacy Policy URL:</strong> </p>
+                            <p><strong>Terms of Service URL:</strong> </p>
                         </div>
                         <div class="flex items-center">
                             <input type="checkbox" id="confirmDetails" required>
@@ -360,7 +356,9 @@
             moreInfo.classList.add('hidden');
         });
 
-		function showStep(step) {
+		let currentStep = 1;
+
+        function showStep(step) {
             document.querySelectorAll('.form-step').forEach((formStep) => {
                 formStep.classList.add('hidden');
             });
@@ -399,6 +397,45 @@
             }
         }
 
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach(formStep => {
+                formStep.classList.add('hidden');
+            });
+            document.querySelector(`[data-step="${step}"]`).classList.remove('hidden');
+            updateProgress(step);
+        }
+
+        function updateProgress(step) {
+            const progressSteps = document.querySelectorAll('.progress-step');
+            progressSteps.forEach((progressStep, index) => {
+                if (index < step) {
+                    progressStep.classList.add('completed');
+                    progressStep.classList.remove('active');
+                } else if (index === step) {
+                    progressStep.classList.add('active');
+                    progressStep.classList.remove('completed');
+                } else {
+                    progressStep.classList.remove('active');
+                    progressStep.classList.remove('completed');
+                }
+            });
+        }
+
+        function nextStep(step) {
+            if (step < 4) {
+                currentStep = step + 1;
+                showStep(currentStep);
+            }
+        }
+
+        function prevStep(step) {
+            if (step > 1) {
+                currentStep = step - 1;
+                showStep(currentStep);
+            }
+        }
+
+        // Initialize the form
         showStep(currentStep);
     </script>
 </body>

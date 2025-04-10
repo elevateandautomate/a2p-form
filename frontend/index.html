@@ -429,6 +429,22 @@
             document.getElementById('reviewPrivacyPolicy').innerText = document.getElementById('privacyPolicy').value;
             document.getElementById('reviewTermsOfService').innerText = document.getElementById('termsOfService').value;
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const learnMoreBtn = document.getElementById('learnMoreBtn');
+            const moreInfo = document.getElementById('moreInfo');
+            const closeInfoBtn = document.getElementById('closeInfoBtn');
+
+            if (learnMoreBtn && moreInfo && closeInfoBtn) {
+                learnMoreBtn.addEventListener('click', function() {
+                    moreInfo.classList.remove('hidden');
+                });
+
+                closeInfoBtn.addEventListener('click', function() {
+                    moreInfo.classList.add('hidden');
+                });
+            }
+        });
     </script>
 </body>
 

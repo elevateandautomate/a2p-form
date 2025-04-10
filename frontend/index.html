@@ -51,35 +51,17 @@
   </style>
 </head>
 <body>
-  <form id="a2pForm">
-    <input name="business_name" placeholder="Business Name" required />
-    <input name="ein" placeholder="EIN" />
-    <input name="website" placeholder="Website" />
-    <input name="email" placeholder="Email" />
-    <input name="phone" placeholder="Phone" />
-    <input name="industry" placeholder="Industry" />
-    <input name="privacy_url" placeholder="Privacy Policy URL" required />
-    <input name="terms_url" placeholder="Terms URL" required />
+  <form method="POST" action="https://n8n-a2p.onrender.com/webhook/a2p-register">
+    <h2>A2P Registration</h2>
+    <input type="text" name="business_name" />
+    <input type="text" name="ein" />
+    <input type="text" name="website" />
+    <input type="email" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="industry" />
+    <input type="url" name="privacy_url" />
+    <input type="url" name="terms_url" />
     <button type="submit">Submit</button>
   </form>
-
-  <script>
-document.getElementById("a2pForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-  const data = {};
-  formData.forEach((value, key) => { data[key] = value });
-
-  await fetch("https://n8n-a2p.onrender.com/webhook/a2p-register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  });
-
-  alert("Submitted!");
-});
-</script>
 </body>
 </html>

@@ -1,10 +1,67 @@
-<form method="POST" action="https://n8n-a2p.onrender.com/webhook/a2p-register">
-<input name="business_name" type="text" placeholder="Business Name" required />
-<input name="ein" type="text" placeholder="EIN" required />
-<input name="website" type="text" placeholder="Website URL" required />
-<input name="email" type="email" placeholder="Email" required />
-<input name="phone" type="text" placeholder="Phone" required />
-<input name="industry" type="text" placeholder="Industry" required />
-<input name="privacy_url" type="url" placeholder="Privacy Policy URL" required />
-<input name="terms_url" type="url" placeholder="Terms of Service URL" required />
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A2P Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    input, button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <form method="POST" action="https://n8n-a2p.onrender.com/webhook/a2p-register">
+    <h2>A2P Registration</h2>
+    <input name="business_name" type="text" placeholder="Business Name" required />
+    <input name="ein" type="text" placeholder="EIN" required />
+    <input name="website" type="url" placeholder="Website URL" required />
+    <input name="email" type="email" placeholder="Email" required />
+    <input name="phone" type="text" placeholder="Phone" required />
+    <input name="industry" type="text" placeholder="Industry" required />
+    <input name="privacy_url" type="url" placeholder="Privacy Policy URL" required />
+    <input name="terms_url" type="url" placeholder="Terms of Service URL" required />
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

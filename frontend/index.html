@@ -348,9 +348,19 @@
 
     <!-- JavaScript to Handle Step Navigation -->
     <script>
-        let currentStep = 1;
+        // Toggle "Learn More About A2P" dropdown
+        document.getElementById('learnMoreBtn').addEventListener('click', function () {
+            const moreInfo = document.getElementById('moreInfo');
+            moreInfo.classList.toggle('hidden');
+        });
 
-        function showStep(step) {
+        // Close "Learn More About A2P" dropdown
+        document.getElementById('closeInfoBtn').addEventListener('click', function () {
+            const moreInfo = document.getElementById('moreInfo');
+            moreInfo.classList.add('hidden');
+        });
+
+		function showStep(step) {
             document.querySelectorAll('.form-step').forEach((formStep) => {
                 formStep.classList.add('hidden');
             });

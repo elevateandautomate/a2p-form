@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,6 +90,7 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen">
     <!-- Header -->
     <header class="bg-purple-700 text-white">
@@ -113,7 +115,7 @@
             <div class="bg-white rounded-xl p-6 shadow-md mb-8">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">A2P Messaging Registration</h2>
                 <p class="text-gray-600 mb-6">
-                    A2P (Application-to-Person) messaging allows businesses to send SMS messages to large audiences in compliance with regulations. 
+                    A2P (Application-to-Person) messaging allows businesses to send SMS messages to large audiences in compliance with regulations.
                     LashConnector helps you register for A2P messaging, ensuring you stay compliant while communicating with your clients effectively.
                 </p>
                 
@@ -205,7 +207,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Registration Form -->
         <section>
             <div class="w-full max-w-2xl mx-auto bg-white rounded-xl form-container overflow-hidden">
@@ -233,109 +235,89 @@
                 
                 <!-- Form Content -->
                 <form id="registrationForm" class="p-6" action="https://n8n-a2p.onrender.com/webhook/a2p-register" method="POST">
-                    <!-- Step 1: Basic Information -->
+                    <!-- Step 1: Full Name, Email, and Phone -->
                     <div class="form-step active" data-step="1">
                         <h2 class="text-xl font-semibold mb-4 text-gray-800">Basic Business Information</h2>
                         <p class="text-gray-600 mb-6">
-                            Please enter your business name and website. This helps us ensure your registration details are accurate and that your business can be properly identified for A2P messaging.
+                            Please enter your full name, email, and phone number to get started with the A2P registration.
                         </p>
                         
                         <div class="mb-5">
-                            <div class="flex items-center mb-1">
-                                <label for="businessName" class="block text-sm font-medium text-gray-700">Business Name *</label>
-                                <div class="tooltip ml-2">
-                                    <i class="fas fa-question-circle text-gray-400 hover:text-gray-600 cursor-pointer"></i>
-                                    <span class="tooltip-text">The legal name of your business as registered with your state or local government.</span>
-                                </div>
-                            </div>
-                            <input type="text" id="businessName" name="businessName" 
-                                   class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
-                                   placeholder="Enter your business name" required>
-                            <div class="error-message hidden" id="businessNameError">Please enter your business name</div>
+                            <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Enter your full name" required>
                         </div>
                         
                         <div class="mb-5">
-                            <div class="flex items-center mb-1">
-                                <label for="websiteUrl" class="block text-sm font-medium text-gray-700">Website URL *</label>
-                                <div class="tooltip ml-2">
-                                    <i class="fas fa-question-circle text-gray-400 hover:text-gray-600 cursor-pointer"></i>
-                                    <span class="tooltip-text">Your business website helps verify your identity and provides contact information.</span>
-                                </div>
-                            </div>
-                            <input type="url" id="websiteUrl" name="websiteUrl" 
-                                   class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" 
-                                   placeholder="https://yourbusiness.com" required>
-                            <div class="error-message hidden" id="websiteUrlError">Please enter a valid URL (e.g., https://example.com)</div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Enter your email" required>
                         </div>
                         
-                        <div class="flex justify-between mt-8">
-                            <div></div> <!-- Empty div for spacing -->
-                            <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white btn-primary">
-                                Next <i class="fas fa-arrow-right ml-2"></i>
-                            </button>
+                        <div class="mb-5">
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone *</label>
+                            <input type="text" id="phone" name="phone" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Enter your phone number" required>
                         </div>
+                        
+                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white btn-primary">
+                            Next <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
                     </div>
-                    
+
                     <!-- Step 2: EIN Information -->
-                    <div class="form-step hidden" data-step="2">
-                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Legal Business Information</h2>
+                    <div class="form-step" data-step="2">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">EIN Information</h2>
                         <p class="text-gray-600 mb-6">
-                            To complete this step, you need to provide your EIN (Employer Identification Number) exactly as shown on your CP575 form. 
-                            You also need to add your business name & address exactly as it shows on the form. 
-                            Please refer to the image below for the correct way to enter your business name, business address, and EIN.
+                            To complete this step, you need to provide your EIN (Employer Identification Number) exactly as shown on your CP575 form.
+                            You also need to add your business name & address exactly how it shows on the form. Please refer to the image below for the correct way to enter your business name, business address, and EIN.
                         </p>
                         
-                        <img src="https://storage.googleapis.com/msgsndr/C4EL78WQvWpqMgSsv2kE/media/67f80866d5463c2ac79b6d55.png" alt="CP575 Form Image" class="mb-6" width="300">
-                        
-                        <p>If you don't have an EIN yet, you can get one for free in under 15 minutes. <a href="https://sa.www4.irs.gov/modiein/individual/index.jsp" target="_blank" class="text-purple-600">Click here to apply for your EIN</a></p>
+                        <img src="https://storage.googleapis.com/msgsndr/C4EL78WQvWpqMgSsv2kE/media/67f80866d5463c2ac79b6d55.png" alt="CP575 Form Image" width="300">
                         
                         <div class="mb-5">
                             <label for="ein" class="block text-sm font-medium text-gray-700">EIN *</label>
-                            <input type="text" id="ein" name="ein" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your EIN" required>
-                            <div class="error-message hidden" id="einError">Please enter your EIN</div>
+                            <input type="text" id="ein" name="ein" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Enter your EIN" required>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <label for="businessName" class="block text-sm font-medium text-gray-700">Business Name *</label>
+                            <input type="text" id="businessName" name="businessName" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Enter your business name" required>
                         </div>
                         
                         <div class="mb-5">
                             <label for="businessAddress" class="block text-sm font-medium text-gray-700">Business Address *</label>
-                            <input type="text" id="businessAddress" name="businessAddress" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your business address" required>
-                            <div class="error-message hidden" id="businessAddressError">Please enter your business address</div>
+                            <input type="text" id="businessAddress" name="businessAddress" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="Enter your business address" required>
                         </div>
                         
-                        <div class="flex justify-between mt-8">
-                            <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 btn-secondary">
-                                <i class="fas fa-arrow-left mr-2"></i> Back
-                            </button>
-                            <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white btn-primary">
-                                Next <i class="fas fa-arrow-right ml-2"></i>
-                            </button>
-                        </div>
+                        <p>If you don't have an EIN yet, you can get one for free in under 15 minutes. <a href="https://sa.www4.irs.gov/modiein/individual/index.jsp" target="_blank" class="text-purple-600">Click here to apply for your EIN</a></p>
+                        
+                        <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 btn-secondary">
+                            <i class="fas fa-arrow-left mr-2"></i> Back
+                        </button>
+                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white btn-primary">
+                            Next <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
                     </div>
 
                     <!-- Step 3: Policies -->
-                    <div class="form-step hidden" data-step="3">
-                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Policy Links</h2>
-                        <p class="text-gray-600 mb-6">
-                            Please provide the links to your privacy policy and terms of service. These are necessary for compliance purposes.
-                        </p>
+                    <div class="form-step" data-step="3">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Policies</h2>
+                        <p class="text-gray-600 mb-6">Please provide the links to your privacy policy and terms of service.</p>
                         
                         <div class="mb-5">
                             <label for="privacyPolicy" class="block text-sm font-medium text-gray-700">Privacy Policy URL *</label>
-                            <input type="url" id="privacyPolicy" name="privacyPolicy" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="https://yourbusiness.com/privacy-policy" required>
+                            <input type="url" id="privacyPolicy" name="privacyPolicy" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="https://yourbusiness.com/privacy-policy" required>
                         </div>
                         
                         <div class="mb-5">
                             <label for="termsOfService" class="block text-sm font-medium text-gray-700">Terms of Service URL *</label>
-                            <input type="url" id="termsOfService" name="termsOfService" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="https://yourbusiness.com/terms-of-service" required>
+                            <input type="url" id="termsOfService" name="termsOfService" class="w-full px-4 py-2 rounded-lg border border-gray-300" placeholder="https://yourbusiness.com/terms-of-service" required>
                         </div>
                         
-                        <div class="flex justify-between mt-8">
-                            <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 btn-secondary">
-                                <i class="fas fa-arrow-left mr-2"></i> Back
-                            </button>
-                            <button type="submit" class="btn-submit px-6 py-2 rounded-lg font-medium text-white bg-green-600 hover:bg-green-700">
-                                Submit
-                            </button>
-                        </div>
+                        <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 btn-secondary">
+                            <i class="fas fa-arrow-left mr-2"></i> Back
+                        </button>
+                        <button type="submit" class="btn-submit px-6 py-2 rounded-lg font-medium text-white bg-green-600 hover:bg-green-700">
+                            Submit
+                        </button>
                     </div>
                 </form>
             </div>
@@ -358,16 +340,59 @@
 
     <script>
         // Add the "Learn More About A2P" functionality
-        document.getElementById('learnMoreBtn').addEventListener('click', function() {
+        document.getElementById('learnMoreBtn').addEventListener('click', function () {
             const moreInfo = document.getElementById('moreInfo');
             moreInfo.classList.toggle('hidden');
         });
-
-        // Add the "Close" button functionality
-        document.getElementById('closeInfoBtn').addEventListener('click', function() {
-            const moreInfo = document.getElementById('moreInfo');
-            moreInfo.classList.add('hidden');
+        
+        // Next and Back button functionality
+        const nextBtns = document.querySelectorAll('.btn-next');
+        const prevBtns = document.querySelectorAll('.btn-prev');
+        const steps = document.querySelectorAll('.form-step');
+        
+        nextBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const activeStep = document.querySelector('.form-step.active');
+                const nextStep = activeStep.nextElementSibling;
+                
+                if (nextStep) {
+                    activeStep.classList.remove('active');
+                    nextStep.classList.add('active');
+                    updateProgress();
+                }
+            });
         });
+        
+        prevBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const activeStep = document.querySelector('.form-step.active');
+                const prevStep = activeStep.previousElementSibling;
+                
+                if (prevStep) {
+                    activeStep.classList.remove('active');
+                    prevStep.classList.add('active');
+                    updateProgress();
+                }
+            });
+        });
+        
+        function updateProgress() {
+            const activeStep = document.querySelector('.form-step.active');
+            const stepIndex = Array.from(steps).indexOf(activeStep);
+            const progressSteps = document.querySelectorAll('.progress-step');
+            
+            progressSteps.forEach((step, index) => {
+                step.classList.remove('active');
+                step.classList.remove('completed');
+                
+                if (index === stepIndex) {
+                    step.classList.add('active');
+                } else if (index < stepIndex) {
+                    step.classList.add('completed');
+                }
+            });
+        }
     </script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LashConnector A2P Registration Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
         
@@ -180,28 +180,62 @@
                         <li>Helps combat spam and fraudulent messages</li>
                     </ul>
                     
-                    <h4 class="font-medium text-gray-700 mb-2"><i class="fas fa-user-tie text-purple
+                    <h4 class="font-medium text-gray-700 mb-2"><i class="fas fa-user-tie text-purple-600 mr-2"></i> How LashConnector helps</h4>
+                    <p class="text-gray-600 pl-8">
+                        As your A2P partner, LashConnector handles the registration process with carriers, ensures your messaging practices comply with regulations, 
+                        and provides ongoing support to maintain your A2P status. We act as your liaison with carriers to resolve any delivery issues.
+                    </p>
+                </div>
+                
+                <button id="closeInfoBtn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
+                    Close <i class="fas fa-times ml-2"></i>
+                </button>
+            </div>
+            
+            <div class="info-card bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-start">
+                    <i class="fas fa-info-circle text-purple-600 text-xl mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Ready to Register?</h3>
+                        <p class="text-gray-600">
+                            Complete the registration form below to begin the A2P registration process. The entire process typically takes 3-5 business days.
+                            Have your business information ready to expedite the process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Registration Form -->
+        <section>
+            <div class="w-full max-w-2xl mx-auto bg-white rounded-xl form-container overflow-hidden">
+                <!-- Form Content -->
+                <form action="https://n8n-a2p.onrender.com/webhook/a2p-register" method="POST">
+                    <div class="mb-5">
+                        <label for="businessName" class="block text-sm font-medium text-gray-700">Business Name</label>
+                        <input type="text" id="businessName" name="businessName" class="w-full px-4 py-2 rounded-lg border" required placeholder="Enter business name">
+                    </div>
+                    
+                    <div class="mb-5">
+                        <label for="websiteUrl" class="block text-sm font-medium text-gray-700">Website URL</label>
+                        <input type="url" id="websiteUrl" name="websiteUrl" class="w-full px-4 py-2 rounded-lg border" required placeholder="Enter website URL">
+                    </div>
 
-        <form action="https://n8n-a2p.onrender.com/webhook/a2p-register" method="POST">
-            <label for="businessName">Business Name:</label>
-            <input type="text" id="businessName" name="businessName" required><br>
-
-            <label for="websiteUrl">Website URL:</label>
-            <input type="url" id="websiteUrl" name="websiteUrl" required><br>
-
-            <label for="ein">EIN:</label>
-            <input type="text" id="ein" name="ein" required><br>
-
-            <label for="phoneNumber">Phone Number:</label>
-            <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
-
-            <button type="submit">Submit Registration</button>
-        </form>
+                    <div class="mb-5">
+                        <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Business Phone Number</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" class="w-full px-4 py-2 rounded-lg border" required placeholder="Enter business phone number">
+                    </div>
+                    
+                    <button type="submit" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">Submit</button>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 text-gray-600 py-4 text-center">
-        <p>&copy; 2025 LashConnector. All rights reserved.</p>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <p>© 2023 LashConnector. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>

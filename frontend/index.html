@@ -388,5 +388,47 @@
             moreInfo.classList.toggle('hidden');
         });
     </script>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let currentStep = 1;
+    const totalSteps = 3;
+    
+    const nextButtons = document.querySelectorAll('.btn-next');
+    const prevButtons = document.querySelectorAll('.btn-prev');
+    const steps = document.querySelectorAll('.form-step');
+    
+    function showStep(stepIndex) {
+      // Hide all steps
+      steps.forEach(step => step.classList.add('hidden'));
+      // Show the current step
+      steps.forEach(step => {
+          if (parseInt(step.dataset.step) === stepIndex) {
+              step.classList.remove('hidden');
+          }
+      });
+    }
+
+    nextButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        if (currentStep < totalSteps) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      });
+    });
+
+    prevButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+    });
+
+    // Show the first step by default
+    showStep(currentStep);
+  });
+</script>
 </body>
 </html>

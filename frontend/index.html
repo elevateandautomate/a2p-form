@@ -53,14 +53,14 @@
 <body>
   <form method="POST" action="https://n8n-a2p.onrender.com/webhook/a2p-register">
     <h2>A2P Registration</h2>
-    <input type="text" name="business_name" />
-    <input type="text" name="ein" />
-    <input type="text" name="website" />
-    <input type="email" name="email" />
-    <input type="text" name="phone" />
-    <input type="text" name="industry" />
-    <input type="url" name="privacy_url" />
-    <input type="url" name="terms_url" />
+    <input type="text" name="business_name" placeholder="Business Name" required />
+    <input type="text" name="ein" placeholder="EIN" required />
+    <input type="text" name="website" placeholder="Website URL" required />
+    <input type="email" name="email" placeholder="Email Address" required />
+    <input type="text" name="phone" placeholder="Phone Number" required />
+    <input type="text" name="industry" placeholder="Industry" required />
+    <input type="url" name="privacy_url" placeholder="Privacy Policy URL" required />
+    <input type="url" name="terms_url" placeholder="Terms of Service URL" required />
     <button type="submit">Submit</button>
   </form>
 </body>

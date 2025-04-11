@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LashConnector A2P Registration Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css?v=1" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .form-container {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-step.active {
+            background-color: #7c3aed;
+            color: white;
+        }
+
+        .progress-step.completed {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .input-error {
+            border-color: #ef4444;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .btn-primary {
+            background-color: #7c3aed;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #6d28d9;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e1;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #4a5568;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.875rem;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .info-card {
+            border-left: 4px solid #7c3aed;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-purple-700 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-comment-alt text-3xl mr-3"></i>
+                    <h1 class="text-2xl font-bold">LashConnector A2P Portal</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <span class="text-purple-200"><i class="fas fa-phone-alt mr-2"></i> (270) 818-1816</span>
+                    <span class="text-purple-200"><i class="fas fa-envelope mr-2"></i> support@lashconnector.com</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Educational Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl p-6 shadow-md mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">A2P Messaging Registration</h2>
+                <p class="text-gray-600 mb-6">
+                    A2P (Application-to-Person) messaging allows businesses to send SMS messages to large audiences in compliance with regulations.
+                    LashConnector helps you register for A2P messaging, ensuring you stay compliant while communicating with your clients effectively.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-mobile-alt text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-800">What is A2P?</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Application-to-Person messaging is the process of sending automated SMS messages from a business application to mobile users.
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-shield-alt text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-800">Why Register?</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Registration ensures compliance with carrier regulations, prevents message blocking, and maintains high delivery rates.
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-handshake text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-800">Our Role</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            LashConnector simplifies the registration process and acts as your liaison with carriers for A2P compliance.
+                        </p>
+                    </div>
+                </div>
+
+                <button id="learnMoreBtn" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                    Learn More About A2P <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+
+            <!-- Expanded Educational Content (hidden by default) -->
+            <div id="moreInfo" class="hidden bg-white rounded-xl p-6 shadow-md mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">A2P Messaging Explained</h3>
+
+                <div class="mb-6">
+                    <h4 class="font-medium text-gray-700 mb-2"><i class="fas fa-question-circle text-purple-600 mr-2"></i> What is A2P messaging?</h4>
+                    <p class="text-gray-600 pl-8 mb-4">
+                        A2P (Application-to-Person) messaging refers to automated text messages sent from a business application to a mobile user.
+                        This includes notifications, alerts, marketing messages, and other business communications sent via SMS.
+                    </p>
+
+                    <h4 class="font-medium text-gray-700 mb-2"><i class="fas fa-exclamation-circle text-purple-600 mr-2"></i> Why is A2P registration important?</h4>
+                    <ul class="text-gray-600 pl-8 mb-4 list-disc space-y-2">
+                        <li>Ensures compliance with carrier regulations and industry standards</li>
+                        <li>Prevents message filtering or blocking by carriers</li>
+                        <li>Maintains high delivery rates for your messages</li>
+                        <li>Provides transparency about your messaging practices</li>
+                        <li>Helps combat spam and fraudulent messages</li>
+                    </ul>
+
+                    <h4 class="font-medium text-gray-700 mb-2"><i class="fas fa-user-tie text-purple-600 mr-2"></i> How LashConnector helps</h4>
+                    <p class="text-gray-600 pl-8">
+                        As your A2P partner, LashConnector handles the registration process with carriers, ensures your messaging practices comply with regulations,
+                        and provides ongoing support to maintain your A2P status. We act as your liaison with carriers to resolve any delivery issues.
+                    </p>
+                </div>
+
+                <button id="closeInfoBtn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
+                    Close <i class="fas fa-times ml-2"></i>
+                </button>
+            </div>
+
+            <div class="info-card bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex items-start">
+                    <i class="fas fa-info-circle text-purple-600 text-xl mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Ready to Register?</h3>
+                        <p class="text-gray-600">
+                            Complete the registration form below to begin the A2P registration process. The entire process typically takes 3-5 business days.
+                            Have your business information ready to expedite the process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Registration Form -->
+        <section>
+            <div class="w-full max-w-2xl mx-auto bg-white rounded-xl form-container overflow-hidden">
+                <!-- Progress Bar -->
+                <div class="px-6 pt-6">
+                    <div class="flex justify-between mb-6">
+                        <div class="progress-step flex flex-col items-center w-1/4">
+                            <div class="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center font-semibold step-number">1</div>
+                            <span class="text-sm mt-2 text-gray-600 step-label">Basic Info</span>
+                        </div>
+                        <div class="progress-step flex flex-col items-center w-1/4">
+                            <div class="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center font-semibold step-number">2</div>
+                            <span class="text-sm mt-2 text-gray-600 step-label">EIN Info</span>
+                        </div>
+                        <div class="progress-step flex flex-col items-center w-1/4">
+                            <div class="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center font-semibold step-number">3</div>
+                            <span class="text-sm mt-2 text-gray-600 step-label">Policies</span>
+                        </div>
+                        <div class="progress-step flex flex-col items-center w-1/4">
+                            <div class="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center font-semibold step-number">4</div>
+                            <span class="text-sm mt-2 text-gray-600 step-label">Review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Content -->
+                <form id="registrationForm" class="p-6" action="https://n8n-a2p.onrender.com/webhook/a2p-register" method="POST">
+                    <!-- Step 1: Basic Information -->
+                    <div class="form-step active" data-step="1">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Basic Business Information</h2>
+                        <p class="text-gray-600 mb-6">
+                            Please enter your full name, email, and phone number to get started with the A2P registration.
+                        </p>
+                        <div class="mb-5">
+                            <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone *</label>
+                            <input type="text" id="phone" name="phone" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your phone number" required>
+                        </div>
+                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700" onclick="nextStep(1)">
+                            Next <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Step 2: EIN Information -->
+<div class="form-step" data-step="2">
+    <h2 class="text-xl font-semibold mb-4 text-gray-800">EIN Information</h2>
+    <p class="text-gray-600 mb-6">
+        To complete this step, you need to provide your EIN (Employer Identification Number) exactly as shown on your CP575 form.
+        You also need to add your business name & address exactly how it shows on the form. Please refer to the image below for the correct way to enter your business name, business address, and EIN.
+    </p>
+    <p>If you don't have an EIN yet, you can get one for free in under 15 minutes. 
+        <a href="https://sa.www4.irs.gov/modiein/individual/index.jsp" target="_blank" style="color: blue;">Click here to apply for your EIN</a>
+    </p>
+    <img src="https://storage.googleapis.com/msgsndr/C4EL78WQvWpqMgSsv2kE/media/67f80866d5463c2ac79b6d55.png" alt="CP575 Form Image" class="w-full mb-6" />
+
+    <div class="mb-5">
+        <label for="ein" class="block text-sm font-medium text-gray-700">EIN *</label>
+        <input type="text" id="ein" name="ein" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your EIN" required>
+    </div>
+
+    <div class="mb-5">
+        <label for="businessName" class="block text-sm font-medium text-gray-700">Business Name *</label>
+        <input type="text" id="businessName" name="businessName" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your business name" required>
+    </div>
+
+    <div class="mb-5">
+        <label for="businessAddress" class="block text-sm font-medium text-gray-700">Business Address *</label>
+        <input type="text" id="businessAddress" name="businessAddress" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your business address" required>
+    </div>
+
+    <!-- File upload field -->
+    <div class="mb-5">
+        <label for="cp575upload" class="block text-sm font-medium text-gray-700">Upload CP575 Form Screenshot *</label>
+        <input type="file" id="cp575upload" name="cp575upload" accept="image/*,application/pdf" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" required>
+        <p class="text-sm text-gray-500 mt-2">Accepted formats: JPG, PNG, or PDF.</p>
+    </div>
+
+    <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 bg-gray-300 hover:bg-gray-400" onclick="prevStep(1)">
+        <i class="fas fa-arrow-left mr-2"></i> Back
+    </button>
+    <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700" onclick="nextStep(2)">
+        Next <i class="fas fa-arrow-right ml-2"></i>
+    </button>
+</div>
+
+                    <!-- Step 3: Policies -->
+                    <div class="form-step" data-step="3">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Policies</h2>
+                        <p class="text-gray-600 mb-6">
+                            Please provide the links to your privacy policy and terms of service.
+                        </p>
+                        <div class="mb-5">
+                            <label for="privacyPolicy" class="block text-sm font-medium text-gray-700">Privacy Policy URL *</label>
+                            <input type="url" id="privacyPolicy" name="privacyPolicy" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="https://yourbusiness.com/privacy-policy" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="termsOfService" class="block text-sm font-medium text-gray-700">Terms of Service URL *</label>
+                            <input type="url" id="termsOfService" name="termsOfService" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="https://yourbusiness.com/terms-of-service" required>
+                        </div>
+<button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 bg-gray-300 hover:bg-gray-400" onclick="prevStep(2)">
+                            <i class="fas fa-arrow-left mr-2"></i> Back
+                        </button>
+                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700" onclick="nextStep(3)">
+                            Next <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Step 4: Review -->
+                    <div class="form-step" data-step="4">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Review Your Information</h2>
+                        <p class="text-gray-600 mb-6">
+                            Please review the information you provided to ensure it is accurate. Double check the details on your CP575 form and confirm that all the information is correct.
+                        </p>
+<div class="mb-5">
+                            <p><strong>Full Name:</strong> <span id="reviewFullName"></span></p>
+                            <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+                            <p><strong>Phone:</strong> <span id="reviewPhone"></span></p>
+                            <p><strong>EIN:</strong> <span id="reviewEin"></span></p>
+                            <p><strong>Business Name:</strong> <span id="reviewBusinessName"></span></p>
+                            <p><strong>Business Address:</strong> <span id="reviewBusinessAddress"></span></p>
+                            <p><strong>Privacy Policy URL:</strong> <span id="reviewPrivacyPolicy"></span></p>
+                            <p><strong>Terms of Service URL:</strong> <span id="reviewTermsOfService"></span></p>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="confirmDetails" required>
+                            <label for="confirmDetails" class="ml-2">I confirm that my details are correct as per my CP575 form.</label>
+                        </div>
+                        <div class="mt-4">
+                            <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 bg-gray-300 hover:bg-gray-400" onclick="prevStep(3)">
+                                <i class="fas fa-arrow-left mr-2"></i> Back
+                            </button>
+<button type="submit" class="btn-submit px-6 py-2 rounded-lg font-medium text-white bg-green-600 hover:bg-green-700" onclick="handleSubmit(event)">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-purple-700 text-white py-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">&copy; 2025 LashConnector. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Your A2P submission is complete. Please allow 3-5 business days to be approved.');
+        }
+
+        let currentStep = 1;
+
+        function showStep(step) {
+            const steps = document.querySelectorAll('.form-step');
+            steps.forEach((stepElement, index) => {
+                if (index === step - 1) {
+                    stepElement.classList.remove('hidden');
+                } else {
+                    stepElement.classList.add('hidden');
+                }
+            });
+
+            updateProgress(step);
+        }
+
+        function updateProgress(step) {
+            const steps = document.querySelectorAll('.progress-step');
+            steps.forEach((stepElement, index) => {
+                if (index < step - 1) {
+                    stepElement.classList.add('completed');
+                    stepElement.classList.remove('active');
+                } else if (index === step - 1) {
+                    stepElement.classList.add('active');
+                    stepElement.classList.remove('completed');
+                } else {
+                    stepElement.classList.remove('active');
+                    stepElement.classList.remove('completed');
+                }
+            });
+        }
+
+        function nextStep(step) {
+            // Basic validation - check if required fields in the current step are filled
+            const currentFormStep = document.querySelector(`.form-step[data-step="${step}"]`);
+            const requiredInputs = currentFormStep.querySelectorAll('input[required]');
+            let allValid = true;
+
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    allValid = false;
+                    input.classList.add('input-error'); // Add error class
+                    // You might want to display an error message as well
+                } else {
+                    input.classList.remove('input-error'); // Remove error class if valid
+                }
+            });
+
+            if (!allValid) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            if (step < 4) {
+                currentStep = step + 1;
+                showStep(currentStep);
+            }
+             if (currentStep === 4) {
+                    populateReviewStep();
+                }
+        }
+
+        function prevStep(step) {
+            if (step > 1) {
+                currentStep = step - 1;
+                showStep(currentStep);
+            }
+        }
+
+        showStep(currentStep);
+
+function populateReviewStep() {
+            document.getElementById('reviewFullName').textContent = document.getElementById('fullName').value;
+            document.getElementById('reviewEmail').textContent = document.getElementById('email').value;
+            document.getElementById('reviewPhone').textContent = document.getElementById('phone').value;
+            document.getElementById('reviewEin').textContent = document.getElementById('ein').value;
+            document.getElementById('reviewBusinessName').textContent = document.getElementById('businessName').value;
+            document.getElementById('reviewBusinessAddress').textContent = document.getElementById('businessAddress').value;
+            document.getElementById('reviewPrivacyPolicy').textContent = document.getElementById('privacyPolicy').value;
+            document.getElementById('reviewTermsOfService').textContent = document.getElementById('termsOfService').value;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const learnMoreBtn = document.getElementById('learnMoreBtn');
+            const moreInfo = document.getElementById('moreInfo');
+            const closeInfoBtn = document.getElementById('closeInfoBtn');
+
+            if (learnMoreBtn && moreInfo && closeInfoBtn) {
+                learnMoreBtn.addEventListener('click', function() {
+                    moreInfo.classList.remove('hidden');
+                });
+
+                closeInfoBtn.addEventListener('click', function() {
+                    moreInfo.classList.add('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

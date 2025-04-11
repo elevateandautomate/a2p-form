@@ -101,7 +101,7 @@
                     <h1 class="text-2xl font-bold">LashConnector A2P Portal</h1>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
-                    <span class="text-purple-200"><i class="fas fa-phone-alt mr-2"></i> (800) 555-1234</span>
+                    <span class="text-purple-200"><i class="fas fa-phone-alt mr-2"></i> (270) 818-1816</span>
                     <span class="text-purple-200"><i class="fas fa-envelope mr-2"></i> support@lashconnector.com</span>
                 </div>
             </div>
@@ -264,6 +264,8 @@
                             To complete this step, you need to provide your EIN (Employer Identification Number) exactly as shown on your CP575 form.
                             You also need to add your business name & address exactly how it shows on the form. Please refer to the image below for the correct way to enter your business name, business address, and EIN.
                         </p>
+<p>If you don't have an EIN yet, you can get one for free in under 15 minutes. <a href="https://sa.www4.irs.gov/modiein/individual/index.jsp" target="_blank" style="color: blue;">Click here to apply for your EIN</a></p>
+                        <img src="https://storage.googleapis.com/msgsndr/C4EL78WQvWpqMgSsv2kE/media/67f80866d5463c2ac79b6d55.png" alt="CP575 Form Image" class="w-full mb-6" />
                         <div class="mb-5">
                             <label for="ein" class="block text-sm font-medium text-gray-700">EIN *</label>
                             <input type="text" id="ein" name="ein" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your EIN" required>
@@ -276,16 +278,12 @@
                             <label for="businessAddress" class="block text-sm font-medium text-gray-700">Business Address *</label>
                             <input type="text" id="businessAddress" name="businessAddress" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="Enter your business address" required>
                         </div>
-<p>If you don't have an EIN yet, you can get one for free in under 15 minutes. <a href="https://sa.www4.irs.gov/modiein/individual/index.jsp" target="_blank" class="text-blue-500">Click here to apply for your EIN</a></p>
-
-                        <div class="mt-4">
-                            <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 bg-gray-300 hover:bg-gray-400" onclick="prevStep(2)">
-                                <i class="fas fa-arrow-left mr-2"></i> Back
-                            </button>
-                            <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700" onclick="nextStep(2)">
-                                Next <i class="fas fa-arrow-right ml-2"></i>
-                            </button>
-                        </div>
+                        <button type="button" class="btn-prev px-6 py-2 rounded-lg font-medium text-gray-700 bg-gray-300 hover:bg-gray-400" onclick="prevStep(1)">
+                            <i class="fas fa-arrow-left mr-2"></i> Back
+                        </button>
+                        <button type="button" class="btn-next px-6 py-2 rounded-lg font-medium text-white bg-purple-600 hover:bg-purple-700" onclick="nextStep(2)">
+                            Next <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
                     </div>
 
                     <!-- Step 3: Policies -->
